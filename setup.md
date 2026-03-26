@@ -160,7 +160,10 @@ cp scheduler/airflow_dag.py ~/airflow/dags/
 Start Airflow:
 
 ```bash
+terminal 1:
 airflow webserver --port 8080
+if it fails: airflow webserver --port 8080 --workers 1
+terminal 2:
 airflow scheduler
 ```
 
