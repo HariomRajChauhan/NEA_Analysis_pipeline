@@ -1,0 +1,19 @@
+=================================================================
+  NEPAL ELECTRICITY AUTHORITY — DAILY OPERATIONS REPORT
+=================================================================
+  Date:      2026-03-24
+  Generated: 2026-03-25 23:10:26 NPT
+-----------------------------------------------------------------
+  GENERATION & CONSUMPTION
+  Note: No smart meter data found for 2026-03-24
+-----------------------------------------------------------------
+  NEPAL ELECTRICITY TRADE (Reference)
+  Import source:    Power Trade Agreement with India (PTC)
+  Export capacity:  NEA Power Exchange Desk, Dhalkebar-Muzaffarpur 400kV
+-----------------------------------------------------------------
+  SYSTEM STATUS
+  National Grid:   Operational
+  Frequency:       50 Hz ± 0.5 Hz
+  Voltage (220kV): Nominal
+  Load Dispatch:   National Load Dispatch Centre (NLDC), Kathmandu
+=================================================================

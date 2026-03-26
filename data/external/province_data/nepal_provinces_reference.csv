@@ -1,0 +1,8 @@
+province_id,province_name,province_name_np,headquarter,area_sq_km,established,districts_count,local_units,chief_minister_office,major_rivers,major_highways,border_countries,special_economic_zones
+1,Koshi,कोशी,Biratnagar,25905,2015-01-10,14,137,Biratnagar,"Koshi, Tamor, Arun","BP Highway, Mechi Highway",India (south),Biratnagar SEZ
+2,Madhesh,मधेश,Janakpur,9661,2015-01-10,8,136,Janakpur,"Kamala, Bagmati, Lalbakiya","East-West Highway, Mahendra Highway",India (south),Simara SEZ (shared)
+3,Bagmati,बागमती,Kathmandu,20300,2015-01-10,13,119,Kathmandu,"Bagmati, Trishuli, Indrawati","Araniko Highway, Prithvi Highway, Tribhuvan Highway",China (north) India (south),Bhrikutimandap
+4,Gandaki,गण्डकी,Pokhara,21773,2015-01-10,11,85,Pokhara,"Gandaki, Marsyangdi, Seti","Pokhara-Naubise Highway, Mustang Road",China (north),Pokhara Valley
+5,Lumbini,लुम्बिनी,Butwal,22288,2015-01-10,12,109,Butwal,"Rapti, West Rapti, Kali","Siddhartha Highway, East-West Highway",India (south),Bhairahawa SEZ
+6,Karnali,कर्णाली,Birendranagar,27984,2015-01-10,10,79,Birendranagar,"Karnali, Bheri, Seti","Karnali Highway, Mid-Hill Highway",China (north),None
+7,Sudurpashchim,सुदूरपश्चिम,Dhangadhi,19539,2015-01-10,9,88,Dhangadhi,"Mahakali, Seti (far-west), Karnali","Mahakali Highway, Seti Highway",India (south) China (north),None

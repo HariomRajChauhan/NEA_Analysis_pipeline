@@ -1,0 +1,3 @@
+# Nepal Electricity Analytics Pipeline — Error Log
+# Only WARNING, ERROR, and CRITICAL messages are written here
+# Alerts are triggered when errors exceed 5/hour threshold

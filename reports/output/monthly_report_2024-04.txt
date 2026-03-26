@@ -1,0 +1,58 @@
+======================================================================
+  NEPAL ELECTRICITY AUTHORITY
+  MONTHLY ELECTRICITY CONSUMPTION REPORT — APRIL 2024
+======================================================================
+  Prepared by: NEA Data Analytics Division
+  Date:        March 25, 2026
+  Fiscal Year: 2023/24 (Nepali FY)
+
+  1. MONTHLY CONSUMPTION SUMMARY
+  ------------------------------------------------------------
+  Total Consumption:    1010.000 GWh
+  Domestic:             398.000 GWh
+  Industrial:           328.000 GWh
+  Commercial:           176.000 GWh
+  Irrigation:           51.000 GWh
+  Peak Demand:          2356.0 MW
+  Load Factor:          71.4%
+  Seasonal Index:       1.1799
+  MoM Growth:           9.19%
+
+  2. PROVINCE-WISE PERFORMANCE
+  ------------------------------------------------------------
+  Province             GWh (2023)     Per Capita   Loss %     Elec. %
+  ------------------------------------------------------------
+  Bagmati                  3420.0          558       13.2%    98.5%
+  Koshi                    1480.0          297       16.2%    94.8%
+  Madhesh                  1210.0          197       18.9%    89.2%
+  Lumbini                  1150.0          224       17.1%    93.5%
+  Gandaki                   780.0          324       14.8%    96.1%
+  Sudurpashchim             480.0          188       20.8%    87.4%
+  Karnali                   285.0          168       21.4%    83.7%
+
+  3. SYSTEM LOSS ANALYSIS
+  ------------------------------------------------------------
+  Total estimated loss:       1392.81 GWh/year
+  Revenue impact:             NPR 12535.3 million/year
+  Recoverable if 15% target:  135.18 GWh/year
+  Highest loss province:      Karnali (21.4%)
+  Lowest loss province:       Bagmati (13.2%)
+
+  4. KEY HIGHLIGHTS — NEPAL CONTEXT
+  ------------------------------------------------------------
+  • Upper Tamakoshi (456 MW) continues full operation
+  • NEA electricity export to India via Dhalkebar-Muzaffarpur 400kV line
+  • EV charging stations under NEA policy expansion
+  • Rural electrification progress: Karnali Province focus area
+  • Arun III (900 MW) construction ongoing in Koshi Province
+
+  5. NEXT MONTH OUTLOOK
+  ------------------------------------------------------------
+  • Monitor pre-monsoon temperature rise (Terai AC load)
+  • Track hydropower reservoir levels (Kulekhani, Upper Tamakoshi)
+  • Review smart meter rollout milestones
+
+======================================================================
+  Nepal Electricity Authority | नेपाल विद्युत् प्राधिकरण
+  Durbarmarg, Kathmandu, Nepal | nea.org.np
+======================================================================

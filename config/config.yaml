@@ -1,0 +1,133 @@
+# Nepal Electricity Analytics Pipeline Configuration
+# Nepal Electricity Authority (NEA) - Data Analytics Project
+
+project:
+  name: "Nepal Electricity Analytics Pipeline"
+  version: "1.0.0"
+  organization: "Nepal Electricity Authority (NEA)"
+  environment: "production"  # development | staging | production
+
+# Database Configuration
+database:
+  host: "localhost"
+  port: 5432
+  name: "nea_electricity_db"
+  user: "nea_admin"
+  password: "${DB_PASSWORD}"  # Set via environment variable
+  pool_size: 10
+  max_overflow: 20
+  schema: "public"
+  sslmode: "prefer"
+
+# Data Source Paths
+data_sources:
+  raw:
+    nea_reports: "data/raw/nea_reports/"
+    open_data_nepal: "data/raw/open_data_nepal/"
+    smart_meter: "data/raw/smart_meter/"
+    weather_api: "data/raw/weather_api/"
+  processed:
+    cleaned: "data/processed/cleaned_data/"
+    transformed: "data/processed/transformed_data/"
+    aggregated: "data/processed/aggregated_data/"
+  external:
+    population: "data/external/population_data/"
+    province: "data/external/province_data/"
+
+# ETL Settings
+etl:
+  batch_size: 10000
+  smart_meter_chunk_size: 50000
+  max_retries: 3
+  retry_delay_seconds: 30
+  parallel_workers: 4
+  timezone: "Asia/Kathmandu"  # NPT = UTC+5:45
+
+# Nepal-Specific Settings
+nepal:
+  fiscal_year_start_month: 4   # Baisakh (mid-April)
+  fiscal_year_start_day: 14
+  provinces: 7
+  districts: 77
+  local_units: 753
+  currency: "NPR"
+  exchange_rate_usd: 133.5     # approx NPR per USD (update periodically)
+  national_grid_voltage_kv: [400, 220, 132, 66, 33, 11, 0.4]
+
+# NEA Tariff Rates (FY 2023/24) - NPR per unit (kWh)
+tariff:
+  domestic_lifeline: 0.00       # D1: 0-20 units
+  domestic_standard: 7.30       # D2: 21-100 units
+  domestic_medium: 8.50         # D3: 101-250 units
+  domestic_high: 11.00          # D4: 251-500 units
+  domestic_premium: 13.00       # D5: >500 units
+  commercial: 11.50
+  industrial_lt: 9.50
+  industrial_ht_11kv: 8.00
+  industrial_ht_33kv: 7.30
+  industrial_eht: 6.50
+  irrigation: 4.50
+  institutional: 10.50
+
+# API Keys and External Services
+apis:
+  weather:
+    provider: "OpenWeatherMap"
+    base_url: "https://api.openweathermap.org/data/2.5/"
+    api_key: "${WEATHER_API_KEY}"
+    stations:
+      - {id: "KTM001", city: "Kathmandu", lat: 27.70, lon: 85.36}
+      - {id: "BRT001", city: "Biratnagar", lat: 26.48, lon: 87.27}
+      - {id: "PKR001", city: "Pokhara", lat: 28.20, lon: 83.98}
+      - {id: "JNK001", city: "Janakpur", lat: 26.72, lon: 85.92}
+      - {id: "DHG001", city: "Dhangadhi", lat: 28.75, lon: 80.58}
+      - {id: "BRN001", city: "Birendranagar", lat: 28.60, lon: 81.63}
+      - {id: "BTW001", city: "Butwal", lat: 27.70, lon: 83.45}
+  dhm:  # Department of Hydrology and Meteorology
+    base_url: "https://www.dhm.gov.np/"
+    enabled: false  # Enable when official API is available
+
+# Logging
+logging:
+  level: "INFO"       # DEBUG | INFO | WARNING | ERROR | CRITICAL
+  log_dir: "logs/"
+  etl_log: "etl_logs.log"
+  error_log: "error_logs.log"
+  max_bytes: 10485760  # 10MB
+  backup_count: 5
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Scheduler (Apache Airflow)
+scheduler:
+  dag_id: "nea_electricity_pipeline"
+  smart_meter_interval: "hourly"
+  daily_report_time: "06:00"    # NPT
+  monthly_report_day: 1
+  yearly_report_month: 4        # Start of Nepali fiscal year (Baisakh)
+
+# Monitoring & Alerts
+monitoring:
+  enabled: true
+  alert_email: "data-team@nea.org.np"
+  slack_webhook: "${SLACK_WEBHOOK_URL}"
+  thresholds:
+    pipeline_max_duration_minutes: 120
+    data_quality_min_pct: 95.0
+    peak_demand_alert_mw: 2500
+    system_loss_alert_pct: 25.0
+
+# Dashboard
+dashboard:
+  powerbi_workspace: "NEA Analytics"
+  refresh_interval_hours: 24
+  output_path: "dashboard/"
+  csv_export: "dashboard/dashboard_data.csv"
+
+# Report Settings
+reports:
+  output_dir: "reports/output/"
+  formats: ["pdf", "excel", "html"]
+  recipients:
+    daily: ["operations@nea.org.np"]
+    monthly: ["management@nea.org.np", "planning@nea.org.np"]
+    yearly: ["board@nea.org.np", "moewri@nepal.gov.np"]

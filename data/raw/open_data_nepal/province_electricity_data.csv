@@ -1,0 +1,8 @@
+province_id,province_name,province_name_np,headquarter,area_sq_km,population_2021,households_2021,electrification_pct_2021,electricity_consumers_2023,annual_consumption_gwh_2023,per_capita_kwh_2023,peak_demand_mw_2023,installed_capacity_mw_2023,transmission_lines_km,distribution_lines_km,system_loss_pct,major_projects
+1,Koshi,कोशी,Biratnagar,25905,4972521,1202457,94.8,612450,1480,297,425,842,1240,8650,16.2,"Tamor HPP, Arun III, Sun Koshi"
+2,Madhesh,मधेश,Janakpur,9661,6126288,1306480,89.2,545820,1210,197,312,185,680,7840,18.9,"Solar Projects, Bagmati Corridor"
+3,Bagmati,बागमती,Kathmandu,20300,6126288,1612546,98.5,1245680,3420,558,1156,685,1850,12480,13.2,"Upper Tamakoshi, Melamchi"
+4,Gandaki,गण्डकी,Pokhara,21773,2403757,641890,96.1,312680,780,324,245,1250,920,5620,14.8,"Upper Marsyangdi, Seti HPP"
+5,Lumbini,लुम्बिनी,Butwal,22288,5123717,1187624,93.5,485230,1150,224,348,420,1140,8240,17.1,"West Seti, Rahughat"
+6,Karnali,कर्णाली,Birendranagar,27984,1688682,415312,83.7,145820,285,168,98,2450,680,3850,21.4,"Karnali Chisapani, Upper Karnali"
+7,Sudurpashchim,सुदूरपश्चिम,Dhangadhi,19539,2552517,631258,87.4,245680,480,188,145,680,820,4980,20.8,"Pancheshwar, Upper Karnali"

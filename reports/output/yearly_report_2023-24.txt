@@ -1,0 +1,123 @@
+========================================================================
+  NEPAL ELECTRICITY AUTHORITY
+  ANNUAL ELECTRICITY REPORT — FISCAL YEAR 2023/24
+  नेपाल विद्युत् प्राधिकरण — वार्षिक विद्युत् प्रतिवेदन
+========================================================================
+  Prepared: March 25, 2026  |  Prepared by: NEA Data Analytics Division
+  Classification: Public  |  Distributed to: Board, MoEWRI, GoN
+
+  SECTION 1 — EXECUTIVE SUMMARY
+  ------------------------------------------------------------
+  Reporting Fiscal Year:    2023/24
+  Total Consumption:        10,200.0 GWh
+  Peak Demand:              2,212.0 MW
+  Total Consumers:          4,950,000
+  Per Capita Consumption:   400 kWh
+  System Loss:              15.8%
+  Installed Capacity:       2,715.0 MW
+  Energy Exported:          1,950.0 GWh
+  Energy Imported:          1,900.0 GWh
+
+  SECTION 2 — NINE-YEAR PERFORMANCE REVIEW (2015/16 – 2023/24)
+  ------------------------------------------------------------
+  Metric                                      2015/16     2023/24      Change
+  ------------------------------------------------------------
+  Total Consumption (GWh)                     3,720.0    10,200.0  CAGR 13.4%
+  Per Capita Consumption (kWh)                    131         400  CAGR 15.0%
+  Peak Demand (MW)                            1,170.0     2,212.0
+  Total Consumers                           3,150,000   4,950,000
+  System Loss (%)                                24.5        15.8  -8.7pp
+  Installed Capacity (MW)                       897.0     2,715.0  +1,818.0 MW
+
+  Key Milestone: Nepal became a NET ELECTRICITY EXPORTER in FY 2022/23,
+  driven by Upper Tamakoshi HPP (456 MW) commissioned in FY 2021/22.
+
+  SECTION 3 — FIVE-YEAR DEMAND FORECAST (2024/25 – 2028/29)
+  ------------------------------------------------------------
+  Fiscal Year      Forecast GWh    Assumed CAGR
+  --------------------------------------------
+  2024/25              11,724.7          12.55%
+  2025/26              13,195.6          12.55%
+  2026/27              14,851.0          12.55%
+  2027/28              16,714.1          12.55%
+  2028/29              18,811.0          12.55%
+
+  Forecast methodology: Log-linear trend regression on 9-year historical data.
+  Key assumption: GDP growth 5–6%, electrification expansion, EV adoption.
+
+  SECTION 4 — PROVINCE ELECTRICITY SCORECARD
+  ------------------------------------------------------------
+  Province                  GWh   kWh/cap   Elec%   Loss% Rank
+  ------------------------------------------------------------
+  Bagmati                3420.0       558   98.5%   13.2%     1
+  Koshi                  1480.0       297   94.8%   16.2%     3
+  Madhesh                1210.0       197   89.2%   18.9%     5
+  Lumbini                1150.0       224   93.5%   17.1%     4
+  Gandaki                 780.0       324   96.1%   14.8%     2
+  Sudurpashchim           480.0       188   87.4%   20.8%     6
+  Karnali                 285.0       168   83.7%   21.4%     7
+
+  SECTION 5 — SYSTEM LOSS ANALYSIS
+  ------------------------------------------------------------
+  Total estimated system loss:            1392.81 GWh/year
+  Revenue impact @ avg NPR 9/kWh:        NPR 12535.3 million/year
+  Recoverable GWh (if all reach 15%):    135.18 GWh/year
+  NEA target:                             <15% by FY 2027/28
+
+  Highest loss province:  Karnali (21.4%)
+  Lowest loss province:   Bagmati (13.2%)
+
+  SECTION 6 — HYDROPOWER DEVELOPMENT PIPELINE
+  ------------------------------------------------------------
+  Operating Projects (>100 MW):
+  Project                       Capacity (MW)  Province        Status
+  ------------------------------------------------------------
+  Upper Tamakoshi                         456  Bagmati         Operating (2021)
+  Kaligandaki A                           144  Lumbini         Operating (2002)
+  Middle Marsyangdi                        70  Gandaki         Operating (2008)
+
+  Under Construction:
+  Arun III (SJVNL)                        900  Koshi           Expected 2026
+  Upper Arun                              639  Koshi           Expected 2028
+
+  Planning / DPR Stage:
+  Tamor Storage                           762  Koshi           DPR underway
+  West Seti                               750  Sudurpashchim   Environmental clearance
+  Pancheshwar (India-Nepal)             6,480  Sudurpashchim   Joint project
+
+  SECTION 7 — STRATEGIC RECOMMENDATIONS
+  ------------------------------------------------------------
+  1. SYSTEM LOSS REDUCTION
+     Target: Reduce system loss from 15.8% to 13% by FY 2026/27.
+     Priority provinces: Karnali (21.4%), Sudurpashchim (20.8%), Madhesh (18.9%).
+     Action: Replace aged distribution transformers; deploy smart metering.
+
+  2. RURAL ELECTRIFICATION
+     Karnali has 16.3% unelectrified households (~67,800 HH).
+     Estimated connection cost: NPR 1,695 million.
+     Action: Prioritise off-grid solar + mini-hydro in remote VDCs.
+
+  3. ELECTRICITY EXPORT EXPANSION
+     Nepal exported 1,950 GWh in FY 2023/24 via Dhalkebar-Muzaffarpur 400kV.
+     New cross-border transmission lines needed for Arun III export.
+     Action: Expedite Butwal-Gorakhpur 400kV line (1,000 MW capacity).
+
+  4. SMART METERING ROLLOUT
+     Current: ~100 AMI meters (pilot). Target: 500,000 by FY 2027/28.
+     Benefits: Real-time demand data, outage detection, revenue assurance.
+     Action: Accelerate procurement under SASEC Power Connectivity project.
+
+  5. EV CHARGING INFRASTRUCTURE
+     EV tariff (NPR 8/kWh) approved. <50 public charging stations installed.
+     Action: Partner with private operators; target 500 stations by 2026.
+
+  6. TIME-OF-USE (ToU) TARIFF PILOT
+     Evening peak (18:00-21:00) causes grid stress. ToU incentives can shift
+     industrial load to off-peak hours, improving load factor by 5–8%.
+     Action: Launch 6-month pilot with 50 industrial consumers in FY 2024/25.
+
+========================================================================
+  NEPAL ELECTRICITY AUTHORITY | नेपाल विद्युत् प्राधिकरण
+  Durbarmarg, Kathmandu 44600, Nepal
+  Tel: +977-1-4153000  |  nea.org.np  |  info@nea.org.np
+========================================================================

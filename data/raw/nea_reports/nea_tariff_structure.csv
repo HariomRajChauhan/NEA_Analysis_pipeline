@@ -1,0 +1,20 @@
+consumer_category,tariff_code,description,energy_charge_nrs_per_unit,demand_charge_nrs_per_kva,fixed_charge_nrs,rebate_pct,surcharge_pct,notes
+Domestic,D1,Up to 20 units/month,0.00,0,0,0,0,Free electricity for lifeline consumers
+Domestic,D2,21-100 units/month,7.30,0,50,0,0,Standard domestic
+Domestic,D3,101-250 units/month,8.50,0,75,0,0,Medium domestic use
+Domestic,D4,251-500 units/month,11.00,0,100,0,0,Higher domestic use
+Domestic,D5,Above 500 units/month,13.00,0,125,0,0,High consumption domestic
+Commercial,C1,Up to 20 kVA,11.50,120,200,0,0,Small commercial
+Commercial,C2,21-100 kVA,11.50,140,300,0,0,Medium commercial
+Commercial,C3,Above 100 kVA,11.50,160,500,0,0,Large commercial
+Industrial,I1,Up to 100 kVA (LT),9.50,120,300,0,0,Small industries LT
+Industrial,I2,Above 100 kVA (LT),9.50,150,500,0,0,Large industries LT
+Industrial,I3,Above 25 kVA (11 kV),8.00,190,800,0,0,Medium industries HT
+Industrial,I4,Above 500 kVA (33 kV),7.30,210,1500,0,0,Large industries HT
+Industrial,I5,Above 5000 kVA (66 kV+),6.50,230,3000,0,0,Very large industries EHT
+Irrigation,AG1,Agricultural pump <10 HP,4.50,0,50,15,0,Subsidised irrigation
+Irrigation,AG2,Agricultural pump 10-50 HP,4.50,70,100,15,0,Medium pump irrigation
+Institutional,IN1,Government/Public,10.50,130,200,10,0,Government rebate applies
+Institutional,IN2,Educational,9.00,100,150,20,0,School/college subsidy
+Street Light,SL1,Municipality street lights,8.50,0,0,0,0,
+EV Charging,EV1,Electric vehicle charging station,8.00,150,200,0,0,Promotes EV adoption

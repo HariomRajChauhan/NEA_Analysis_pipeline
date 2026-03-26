@@ -1,0 +1,212 @@
+# Nepal Electricity Analytics Pipeline — ETL Log
+# Log format: TIMESTAMP - LOGGER - LEVEL - MESSAGE
+# Timezone: Asia/Kathmandu (NPT = UTC+5:45)
+# This file is auto-rotated at 10MB, keeping 5 backups
+2026-03-25 23:09:23,363 - etl.extract.extract_nea - INFO - === Starting NEA Data Extraction ===
+2026-03-25 23:09:23,363 - etl.extract.extract_nea - INFO - Extracting annual consumption from: data/raw/nea_reports/nea_annual_consumption.csv
+2026-03-25 23:09:23,366 - etl.extract.extract_nea - INFO - Extracted 9 annual records
+2026-03-25 23:09:23,366 - etl.extract.extract_nea - INFO - Extracting monthly consumption from: data/raw/nea_reports/nea_monthly_consumption.csv
+2026-03-25 23:09:23,372 - etl.extract.extract_nea - INFO - Extracted 24 monthly records
+2026-03-25 23:09:23,372 - etl.extract.extract_nea - INFO - Extracting tariff structure from: data/raw/nea_reports/nea_tariff_structure.csv
+2026-03-25 23:09:23,374 - etl.extract.extract_nea - INFO - Extracted 19 tariff categories
+2026-03-25 23:09:23,374 - etl.extract.extract_nea - INFO - Extracted 14 hydropower projects
+2026-03-25 23:09:23,375 - etl.extract.extract_nea - INFO - === NEA Extraction Complete. Datasets: ['annual', 'monthly', 'tariff', 'projects'] ===
+2026-03-25 23:09:23,375 - etl.extract.extract_smart_meter - INFO - === Starting Smart Meter Extraction ===
+2026-03-25 23:09:23,375 - etl.extract.extract_smart_meter - INFO - Extracting smart meter data from data/raw/smart_meter/smart_meter_hourly.csv
+2026-03-25 23:09:23,468 - etl.extract.extract_smart_meter - INFO - Smart meter extract: 72000 rows, 100 meters, date range 2024-01-01 00:00:00 to 2024-01-30 23:00:00
+2026-03-25 23:09:23,469 - etl.extract.extract_smart_meter - INFO - Extracting smart meter data from data/raw/smart_meter/smart_meter_hourly.csv
+2026-03-25 23:09:23,552 - etl.extract.extract_smart_meter - INFO - Smart meter extract: 72000 rows, 100 meters, date range 2024-01-01 00:00:00 to 2024-01-30 23:00:00
+2026-03-25 23:09:23,569 - etl.extract.extract_smart_meter - INFO - Generated meter registry for 100 meters
+2026-03-25 23:09:25,337 - etl.extract.extract_smart_meter - INFO - Detected 0 outage events across all meters
+2026-03-25 23:09:25,357 - etl.extract.extract_smart_meter - INFO - Extracted peak demand records: 10000 rows
+2026-03-25 23:09:25,358 - etl.extract.extract_smart_meter - INFO - === Smart Meter Extraction Complete ===
+2026-03-25 23:09:25,358 - etl.extract.extract_weather_api - INFO - === Starting Weather Data Extraction ===
+2026-03-25 23:09:25,358 - etl.extract.extract_weather_api - INFO - Loading local weather data from data/raw/weather_api/weather_data.csv
+2026-03-25 23:09:25,360 - etl.extract.extract_weather_api - INFO - Loaded 22 weather records from 2024-01-01 00:00:00 to 2024-12-01 00:00:00
+2026-03-25 23:09:25,362 - etl.extract.extract_weather_api - INFO - Calculated HDD, CDD, and thermal discomfort index
+2026-03-25 23:09:25,364 - etl.extract.extract_weather_api - INFO - Added monsoon season flags
+2026-03-25 23:09:25,364 - etl.extract.extract_weather_api - INFO - === Weather Extraction Complete ===
+2026-03-25 23:09:25,364 - etl.extract.extract_open_data - INFO - === Starting Open Data Nepal Extraction ===
+2026-03-25 23:09:25,365 - etl.extract.extract_open_data - INFO - Extracting province electricity data from data/raw/open_data_nepal/province_electricity_data.csv
+2026-03-25 23:09:25,366 - etl.extract.extract_open_data - INFO - Loaded 7 province records
+2026-03-25 23:09:25,366 - etl.extract.extract_open_data - INFO - Extracting district electricity data from data/raw/open_data_nepal/district_electricity.csv
+2026-03-25 23:09:25,368 - etl.extract.extract_open_data - INFO - Loaded 77 district records
+2026-03-25 23:09:25,368 - etl.extract.extract_open_data - INFO - Extracting population data from data/external/population_data/nepal_province_population.csv
+2026-03-25 23:09:25,369 - etl.extract.extract_open_data - INFO - Loaded population data for 7 provinces
+2026-03-25 23:09:25,373 - etl.extract.extract_open_data - WARNING - World Bank API unavailable (HTTPSConnectionPool(host='api.worldbank.org', port=443): Max retries exceeded with url: /v2/country/NP/indicator/EG.USE.ELEC.KH.PC?format=json&per_page=30&mrv=20 (Caused by NameResolutionError("HTTPSConnection(host='api.worldbank.org', port=443): Failed to resolve 'api.worldbank.org' ([Errno -3] Temporary failure in name resolution)"))), using embedded data
+2026-03-25 23:09:25,374 - etl.extract.extract_open_data - INFO - Extracted 14 IPP project records
+2026-03-25 23:09:25,374 - etl.extract.extract_open_data - INFO - === Open Data Extraction Complete ===
+2026-03-25 23:09:25,387 - etl.transform.clean_data - INFO - === Starting Data Cleaning Stage ===
+2026-03-25 23:09:25,387 - etl.transform.clean_data - INFO - Cleaning annual consumption data
+2026-03-25 23:09:25,395 - etl.transform.clean_data - INFO - [annual_consumption] after clean: shape=(9, 21), total_nulls=0, memory=2KB
+2026-03-25 23:09:25,398 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/annual_consumption_cleaned.csv (9 rows)
+2026-03-25 23:09:25,398 - etl.transform.clean_data - INFO - Cleaning monthly consumption data
+2026-03-25 23:09:25,404 - etl.transform.clean_data - INFO - [monthly_consumption] after clean: shape=(24, 18), total_nulls=2, memory=7KB
+2026-03-25 23:09:25,406 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/monthly_consumption_cleaned.csv (24 rows)
+2026-03-25 23:09:25,406 - etl.transform.clean_data - INFO - Cleaning smart meter data: 72000 rows
+2026-03-25 23:09:25,491 - etl.transform.clean_data - INFO - [smart_meter] after clean: shape=(72000, 17), total_nulls=0, memory=10969KB
+2026-03-25 23:09:26,069 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/smart_meter_cleaned.csv (72000 rows)
+2026-03-25 23:09:26,070 - etl.transform.clean_data - INFO - Cleaning weather data
+2026-03-25 23:09:26,076 - etl.transform.clean_data - INFO - [weather] after clean: shape=(22, 27), total_nulls=0, memory=6KB
+2026-03-25 23:09:26,078 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/weather_cleaned.csv (22 rows)
+2026-03-25 23:09:26,078 - etl.transform.clean_data - INFO - Cleaning province data
+2026-03-25 23:09:26,081 - etl.transform.clean_data - INFO - [province_data] after clean: shape=(7, 19), total_nulls=0, memory=2KB
+2026-03-25 23:09:26,082 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/province_electricity_cleaned.csv (7 rows)
+2026-03-25 23:09:26,082 - etl.transform.clean_data - INFO - === Cleaning Complete. Datasets: ['annual', 'monthly', 'smart_meter', 'weather', 'province'] ===
+2026-03-25 23:09:26,094 - etl.transform.transform_data - INFO - === Starting Transformation Stage ===
+2026-03-25 23:09:26,094 - etl.transform.transform_data - INFO - Computing revenue estimates from tariff rates
+2026-03-25 23:09:26,096 - etl.transform.transform_data - INFO - Revenue calculation complete
+2026-03-25 23:09:26,099 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/monthly_revenue_transformed.csv (24 rows)
+2026-03-25 23:09:41,986 - etl.extract.extract_nea - INFO - === Starting NEA Data Extraction ===
+2026-03-25 23:09:41,986 - etl.extract.extract_nea - INFO - Extracting annual consumption from: data/raw/nea_reports/nea_annual_consumption.csv
+2026-03-25 23:09:41,990 - etl.extract.extract_nea - INFO - Extracted 9 annual records
+2026-03-25 23:09:41,990 - etl.extract.extract_nea - INFO - Extracting monthly consumption from: data/raw/nea_reports/nea_monthly_consumption.csv
+2026-03-25 23:09:41,996 - etl.extract.extract_nea - INFO - Extracted 24 monthly records
+2026-03-25 23:09:41,996 - etl.extract.extract_nea - INFO - Extracting tariff structure from: data/raw/nea_reports/nea_tariff_structure.csv
+2026-03-25 23:09:41,997 - etl.extract.extract_nea - INFO - Extracted 19 tariff categories
+2026-03-25 23:09:41,998 - etl.extract.extract_nea - INFO - Extracted 14 hydropower projects
+2026-03-25 23:09:41,998 - etl.extract.extract_nea - INFO - === NEA Extraction Complete. Datasets: ['annual', 'monthly', 'tariff', 'projects'] ===
+2026-03-25 23:09:41,998 - etl.extract.extract_smart_meter - INFO - === Starting Smart Meter Extraction ===
+2026-03-25 23:09:41,998 - etl.extract.extract_smart_meter - INFO - Extracting smart meter data from data/raw/smart_meter/smart_meter_hourly.csv
+2026-03-25 23:09:42,095 - etl.extract.extract_smart_meter - INFO - Smart meter extract: 72000 rows, 100 meters, date range 2024-01-01 00:00:00 to 2024-01-30 23:00:00
+2026-03-25 23:09:42,095 - etl.extract.extract_smart_meter - INFO - Extracting smart meter data from data/raw/smart_meter/smart_meter_hourly.csv
+2026-03-25 23:09:42,179 - etl.extract.extract_smart_meter - INFO - Smart meter extract: 72000 rows, 100 meters, date range 2024-01-01 00:00:00 to 2024-01-30 23:00:00
+2026-03-25 23:09:42,197 - etl.extract.extract_smart_meter - INFO - Generated meter registry for 100 meters
+2026-03-25 23:09:44,000 - etl.extract.extract_smart_meter - INFO - Detected 0 outage events across all meters
+2026-03-25 23:09:44,026 - etl.extract.extract_smart_meter - INFO - Extracted peak demand records: 10000 rows
+2026-03-25 23:09:44,027 - etl.extract.extract_smart_meter - INFO - === Smart Meter Extraction Complete ===
+2026-03-25 23:09:44,027 - etl.extract.extract_weather_api - INFO - === Starting Weather Data Extraction ===
+2026-03-25 23:09:44,027 - etl.extract.extract_weather_api - INFO - Loading local weather data from data/raw/weather_api/weather_data.csv
+2026-03-25 23:09:44,030 - etl.extract.extract_weather_api - INFO - Loaded 22 weather records from 2024-01-01 00:00:00 to 2024-12-01 00:00:00
+2026-03-25 23:09:44,032 - etl.extract.extract_weather_api - INFO - Calculated HDD, CDD, and thermal discomfort index
+2026-03-25 23:09:44,034 - etl.extract.extract_weather_api - INFO - Added monsoon season flags
+2026-03-25 23:09:44,035 - etl.extract.extract_weather_api - INFO - === Weather Extraction Complete ===
+2026-03-25 23:09:44,035 - etl.extract.extract_open_data - INFO - === Starting Open Data Nepal Extraction ===
+2026-03-25 23:09:44,035 - etl.extract.extract_open_data - INFO - Extracting province electricity data from data/raw/open_data_nepal/province_electricity_data.csv
+2026-03-25 23:09:44,036 - etl.extract.extract_open_data - INFO - Loaded 7 province records
+2026-03-25 23:09:44,036 - etl.extract.extract_open_data - INFO - Extracting district electricity data from data/raw/open_data_nepal/district_electricity.csv
+2026-03-25 23:09:44,038 - etl.extract.extract_open_data - INFO - Loaded 77 district records
+2026-03-25 23:09:44,038 - etl.extract.extract_open_data - INFO - Extracting population data from data/external/population_data/nepal_province_population.csv
+2026-03-25 23:09:44,039 - etl.extract.extract_open_data - INFO - Loaded population data for 7 provinces
+2026-03-25 23:09:44,043 - etl.extract.extract_open_data - WARNING - World Bank API unavailable (HTTPSConnectionPool(host='api.worldbank.org', port=443): Max retries exceeded with url: /v2/country/NP/indicator/EG.USE.ELEC.KH.PC?format=json&per_page=30&mrv=20 (Caused by NameResolutionError("HTTPSConnection(host='api.worldbank.org', port=443): Failed to resolve 'api.worldbank.org' ([Errno -3] Temporary failure in name resolution)"))), using embedded data
+2026-03-25 23:09:44,044 - etl.extract.extract_open_data - INFO - Extracted 14 IPP project records
+2026-03-25 23:09:44,044 - etl.extract.extract_open_data - INFO - === Open Data Extraction Complete ===
+2026-03-25 23:09:44,044 - etl.transform.clean_data - INFO - === Starting Data Cleaning Stage ===
+2026-03-25 23:09:44,045 - etl.transform.clean_data - INFO - Cleaning annual consumption data
+2026-03-25 23:09:44,052 - etl.transform.clean_data - INFO - [annual_consumption] after clean: shape=(9, 21), total_nulls=0, memory=2KB
+2026-03-25 23:09:44,055 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/annual_consumption_cleaned.csv (9 rows)
+2026-03-25 23:09:44,055 - etl.transform.clean_data - INFO - Cleaning monthly consumption data
+2026-03-25 23:09:44,062 - etl.transform.clean_data - INFO - [monthly_consumption] after clean: shape=(24, 18), total_nulls=2, memory=7KB
+2026-03-25 23:09:44,064 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/monthly_consumption_cleaned.csv (24 rows)
+2026-03-25 23:09:44,064 - etl.transform.clean_data - INFO - Cleaning smart meter data: 72000 rows
+2026-03-25 23:09:44,146 - etl.transform.clean_data - INFO - [smart_meter] after clean: shape=(72000, 17), total_nulls=0, memory=10969KB
+2026-03-25 23:09:44,743 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/smart_meter_cleaned.csv (72000 rows)
+2026-03-25 23:09:44,743 - etl.transform.clean_data - INFO - Cleaning weather data
+2026-03-25 23:09:44,750 - etl.transform.clean_data - INFO - [weather] after clean: shape=(22, 27), total_nulls=0, memory=6KB
+2026-03-25 23:09:44,752 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/weather_cleaned.csv (22 rows)
+2026-03-25 23:09:44,752 - etl.transform.clean_data - INFO - Cleaning province data
+2026-03-25 23:09:44,756 - etl.transform.clean_data - INFO - [province_data] after clean: shape=(7, 19), total_nulls=0, memory=2KB
+2026-03-25 23:09:44,757 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/province_electricity_cleaned.csv (7 rows)
+2026-03-25 23:09:44,757 - etl.transform.clean_data - INFO - === Cleaning Complete. Datasets: ['annual', 'monthly', 'smart_meter', 'weather', 'province'] ===
+2026-03-25 23:09:44,757 - etl.transform.transform_data - INFO - === Starting Transformation Stage ===
+2026-03-25 23:09:44,758 - etl.transform.transform_data - INFO - Computing revenue estimates from tariff rates
+2026-03-25 23:09:44,760 - etl.transform.transform_data - INFO - Revenue calculation complete
+2026-03-25 23:09:44,763 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/monthly_revenue_transformed.csv (24 rows)
+2026-03-25 23:09:44,766 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/annual_transformed.csv (9 rows)
+2026-03-25 23:09:44,767 - etl.transform.transform_data - INFO - Engineering smart meter features
+2026-03-25 23:09:45,460 - etl.transform.transform_data - INFO - Smart meter feature engineering complete
+2026-03-25 23:09:46,256 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/smart_meter_features_transformed.csv (72000 rows)
+2026-03-25 23:09:46,256 - etl.transform.transform_data - INFO - Creating system-level hourly load profile
+2026-03-25 23:09:46,284 - etl.transform.transform_data - INFO - System load profile: 2160 hourly records
+2026-03-25 23:09:46,294 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/hourly_system_load_transformed.csv (2160 rows)
+2026-03-25 23:09:46,294 - etl.transform.transform_data - INFO - Creating consumption-weather joint features
+2026-03-25 23:09:46,304 - etl.transform.transform_data - INFO - Weather-consumption join: 24 rows
+2026-03-25 23:09:46,305 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/weather_consumption_transformed.csv (24 rows)
+2026-03-25 23:09:46,305 - etl.transform.transform_data - INFO - Enriching province data with population metrics
+2026-03-25 23:10:08,440 - etl.extract.extract_nea - INFO - === Starting NEA Data Extraction ===
+2026-03-25 23:10:08,441 - etl.extract.extract_nea - INFO - Extracting annual consumption from: data/raw/nea_reports/nea_annual_consumption.csv
+2026-03-25 23:10:08,444 - etl.extract.extract_nea - INFO - Extracted 9 annual records
+2026-03-25 23:10:08,444 - etl.extract.extract_nea - INFO - Extracting monthly consumption from: data/raw/nea_reports/nea_monthly_consumption.csv
+2026-03-25 23:10:08,449 - etl.extract.extract_nea - INFO - Extracted 24 monthly records
+2026-03-25 23:10:08,450 - etl.extract.extract_nea - INFO - Extracting tariff structure from: data/raw/nea_reports/nea_tariff_structure.csv
+2026-03-25 23:10:08,451 - etl.extract.extract_nea - INFO - Extracted 19 tariff categories
+2026-03-25 23:10:08,452 - etl.extract.extract_nea - INFO - Extracted 14 hydropower projects
+2026-03-25 23:10:08,453 - etl.extract.extract_nea - INFO - === NEA Extraction Complete. Datasets: ['annual', 'monthly', 'tariff', 'projects'] ===
+2026-03-25 23:10:08,453 - etl.extract.extract_smart_meter - INFO - === Starting Smart Meter Extraction ===
+2026-03-25 23:10:08,453 - etl.extract.extract_smart_meter - INFO - Extracting smart meter data from data/raw/smart_meter/smart_meter_hourly.csv
+2026-03-25 23:10:08,545 - etl.extract.extract_smart_meter - INFO - Smart meter extract: 72000 rows, 100 meters, date range 2024-01-01 00:00:00 to 2024-01-30 23:00:00
+2026-03-25 23:10:08,546 - etl.extract.extract_smart_meter - INFO - Extracting smart meter data from data/raw/smart_meter/smart_meter_hourly.csv
+2026-03-25 23:10:08,627 - etl.extract.extract_smart_meter - INFO - Smart meter extract: 72000 rows, 100 meters, date range 2024-01-01 00:00:00 to 2024-01-30 23:00:00
+2026-03-25 23:10:08,645 - etl.extract.extract_smart_meter - INFO - Generated meter registry for 100 meters
+2026-03-25 23:10:10,473 - etl.extract.extract_smart_meter - INFO - Detected 0 outage events across all meters
+2026-03-25 23:10:10,494 - etl.extract.extract_smart_meter - INFO - Extracted peak demand records: 10000 rows
+2026-03-25 23:10:10,495 - etl.extract.extract_smart_meter - INFO - === Smart Meter Extraction Complete ===
+2026-03-25 23:10:10,495 - etl.extract.extract_weather_api - INFO - === Starting Weather Data Extraction ===
+2026-03-25 23:10:10,495 - etl.extract.extract_weather_api - INFO - Loading local weather data from data/raw/weather_api/weather_data.csv
+2026-03-25 23:10:10,497 - etl.extract.extract_weather_api - INFO - Loaded 22 weather records from 2024-01-01 00:00:00 to 2024-12-01 00:00:00
+2026-03-25 23:10:10,500 - etl.extract.extract_weather_api - INFO - Calculated HDD, CDD, and thermal discomfort index
+2026-03-25 23:10:10,502 - etl.extract.extract_weather_api - INFO - Added monsoon season flags
+2026-03-25 23:10:10,502 - etl.extract.extract_weather_api - INFO - === Weather Extraction Complete ===
+2026-03-25 23:10:10,502 - etl.extract.extract_open_data - INFO - === Starting Open Data Nepal Extraction ===
+2026-03-25 23:10:10,502 - etl.extract.extract_open_data - INFO - Extracting province electricity data from data/raw/open_data_nepal/province_electricity_data.csv
+2026-03-25 23:10:10,503 - etl.extract.extract_open_data - INFO - Loaded 7 province records
+2026-03-25 23:10:10,504 - etl.extract.extract_open_data - INFO - Extracting district electricity data from data/raw/open_data_nepal/district_electricity.csv
+2026-03-25 23:10:10,505 - etl.extract.extract_open_data - INFO - Loaded 77 district records
+2026-03-25 23:10:10,505 - etl.extract.extract_open_data - INFO - Extracting population data from data/external/population_data/nepal_province_population.csv
+2026-03-25 23:10:10,506 - etl.extract.extract_open_data - INFO - Loaded population data for 7 provinces
+2026-03-25 23:10:10,510 - etl.extract.extract_open_data - WARNING - World Bank API unavailable (HTTPSConnectionPool(host='api.worldbank.org', port=443): Max retries exceeded with url: /v2/country/NP/indicator/EG.USE.ELEC.KH.PC?format=json&per_page=30&mrv=20 (Caused by NameResolutionError("HTTPSConnection(host='api.worldbank.org', port=443): Failed to resolve 'api.worldbank.org' ([Errno -3] Temporary failure in name resolution)"))), using embedded data
+2026-03-25 23:10:10,511 - etl.extract.extract_open_data - INFO - Extracted 14 IPP project records
+2026-03-25 23:10:10,511 - etl.extract.extract_open_data - INFO - === Open Data Extraction Complete ===
+2026-03-25 23:10:10,511 - etl.transform.clean_data - INFO - === Starting Data Cleaning Stage ===
+2026-03-25 23:10:10,511 - etl.transform.clean_data - INFO - Cleaning annual consumption data
+2026-03-25 23:10:10,529 - etl.transform.clean_data - INFO - [annual_consumption] after clean: shape=(9, 21), total_nulls=0, memory=2KB
+2026-03-25 23:10:10,531 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/annual_consumption_cleaned.csv (9 rows)
+2026-03-25 23:10:10,531 - etl.transform.clean_data - INFO - Cleaning monthly consumption data
+2026-03-25 23:10:10,537 - etl.transform.clean_data - INFO - [monthly_consumption] after clean: shape=(24, 18), total_nulls=2, memory=7KB
+2026-03-25 23:10:10,538 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/monthly_consumption_cleaned.csv (24 rows)
+2026-03-25 23:10:10,539 - etl.transform.clean_data - INFO - Cleaning smart meter data: 72000 rows
+2026-03-25 23:10:10,608 - etl.transform.clean_data - INFO - [smart_meter] after clean: shape=(72000, 17), total_nulls=0, memory=10969KB
+2026-03-25 23:10:11,197 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/smart_meter_cleaned.csv (72000 rows)
+2026-03-25 23:10:11,198 - etl.transform.clean_data - INFO - Cleaning weather data
+2026-03-25 23:10:11,205 - etl.transform.clean_data - INFO - [weather] after clean: shape=(22, 27), total_nulls=0, memory=6KB
+2026-03-25 23:10:11,206 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/weather_cleaned.csv (22 rows)
+2026-03-25 23:10:11,224 - etl.transform.clean_data - INFO - Cleaning province data
+2026-03-25 23:10:11,227 - etl.transform.clean_data - INFO - [province_data] after clean: shape=(7, 19), total_nulls=0, memory=2KB
+2026-03-25 23:10:11,228 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/province_electricity_cleaned.csv (7 rows)
+2026-03-25 23:10:11,228 - etl.transform.clean_data - INFO - === Cleaning Complete. Datasets: ['annual', 'monthly', 'smart_meter', 'weather', 'province'] ===
+2026-03-25 23:10:11,229 - etl.transform.transform_data - INFO - === Starting Transformation Stage ===
+2026-03-25 23:10:11,229 - etl.transform.transform_data - INFO - Computing revenue estimates from tariff rates
+2026-03-25 23:10:11,231 - etl.transform.transform_data - INFO - Revenue calculation complete
+2026-03-25 23:10:11,234 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/monthly_revenue_transformed.csv (24 rows)
+2026-03-25 23:10:11,237 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/annual_transformed.csv (9 rows)
+2026-03-25 23:10:11,237 - etl.transform.transform_data - INFO - Engineering smart meter features
+2026-03-25 23:10:11,901 - etl.transform.transform_data - INFO - Smart meter feature engineering complete
+2026-03-25 23:10:12,735 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/smart_meter_features_transformed.csv (72000 rows)
+2026-03-25 23:10:12,736 - etl.transform.transform_data - INFO - Creating system-level hourly load profile
+2026-03-25 23:10:12,763 - etl.transform.transform_data - INFO - System load profile: 2160 hourly records
+2026-03-25 23:10:12,774 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/hourly_system_load_transformed.csv (2160 rows)
+2026-03-25 23:10:12,774 - etl.transform.transform_data - INFO - Creating consumption-weather joint features
+2026-03-25 23:10:12,784 - etl.transform.transform_data - INFO - Weather-consumption join: 24 rows
+2026-03-25 23:10:12,786 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/weather_consumption_transformed.csv (24 rows)
+2026-03-25 23:10:12,786 - etl.transform.transform_data - INFO - Enriching province data with population metrics
+2026-03-25 23:10:12,788 - etl.transform.transform_data - INFO - Province enrichment complete: 7 rows, 23 columns
+2026-03-25 23:10:12,789 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/province_enriched_transformed.csv (7 rows)
+2026-03-25 23:10:12,789 - etl.transform.transform_data - INFO - === Transformation Complete. Datasets: ['monthly_revenue', 'annual', 'smart_meter_features', 'hourly_system_load', 'weather_consumption', 'province_enriched'] ===
+2026-03-25 23:10:12,790 - etl.transform.aggregate_data - INFO - === Starting Aggregation Stage ===
+2026-03-25 23:10:12,790 - etl.transform.aggregate_data - INFO - Aggregating annual KPI summary
+2026-03-25 23:10:12,794 - etl.transform.aggregate_data - INFO - Saved aggregated: data/processed/aggregated_data/annual_kpi_summary.csv (9 rows)
+2026-03-25 23:10:12,794 - etl.transform.aggregate_data - INFO - Aggregating monthly trends
+2026-03-25 23:10:12,797 - etl.transform.aggregate_data - INFO - Saved aggregated: data/processed/aggregated_data/monthly_trends.csv (24 rows)
+2026-03-25 23:10:12,797 - etl.transform.aggregate_data - INFO - Aggregating revenue by sector
+2026-03-25 23:10:12,802 - etl.transform.aggregate_data - INFO - Saved aggregated: data/processed/aggregated_data/revenue_by_sector.csv (2 rows)
+2026-03-25 23:10:12,802 - etl.transform.aggregate_data - INFO - Aggregating province rankings
+2026-03-25 23:10:12,805 - etl.transform.aggregate_data - INFO - Saved aggregated: data/processed/aggregated_data/province_ranking.csv (7 rows)
+2026-03-25 23:10:12,805 - etl.transform.aggregate_data - INFO - Aggregating system losses by province
+2026-03-25 23:10:12,809 - etl.transform.aggregate_data - INFO - Saved aggregated: data/processed/aggregated_data/system_losses_by_province.csv (7 rows)
+2026-03-25 23:10:12,809 - etl.transform.aggregate_data - INFO - Aggregating hourly load profiles
+2026-03-25 23:10:12,856 - etl.transform.aggregate_data - INFO - Saved aggregated: data/processed/aggregated_data/hourly_load_profile.csv (144 rows)
+2026-03-25 23:10:12,856 - etl.transform.aggregate_data - INFO - Aggregating peak demand calendar
+2026-03-25 23:10:12,876 - etl.transform.aggregate_data - INFO - Saved aggregated: data/processed/aggregated_data/peak_demand_calendar.csv (90 rows)
+2026-03-25 23:10:12,877 - etl.transform.aggregate_data - INFO - Creating dashboard export CSV
+2026-03-25 23:10:12,879 - etl.transform.aggregate_data - INFO - Dashboard export saved: dashboard/dashboard_data.csv
+2026-03-25 23:10:12,879 - etl.transform.aggregate_data - INFO - === Aggregation Complete. Tables: ['annual_summary', 'monthly_trends', 'revenue_by_sector', 'province_ranking', 'system_losses', 'hourly_load_profile', 'peak_demand_calendar'] ===

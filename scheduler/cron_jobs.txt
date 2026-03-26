@@ -1,0 +1,57 @@
+# ============================================================
+# Nepal Electricity Analytics Pipeline — Cron Jobs
+# Nepal Standard Time (NPT) = UTC+5:45
+# All times below are in NPT
+# Install: crontab -e  then paste these lines
+# Project dir: set NEA_DIR to your actual install path
+# ============================================================
+
+NEA_DIR=/opt/nea-pipeline
+PYTHON=/usr/bin/python3
+LOG=/opt/nea-pipeline/logs/cron.log
+
+# ── DAILY JOBS ──────────────────────────────────────────────
+
+# 01:00 NPT daily — Smart meter data ingest
+# Ingests previous day's hourly readings from AMI system
+15 19 * * * cd $NEA_DIR && $PYTHON run_pipeline.py --mode extract --start-date $(date -d "yesterday" +\%Y-\%m-\%d) >> $LOG 2>&1
+
+# 06:00 NPT daily — Generate daily operations report
+15 0 * * * cd $NEA_DIR && $PYTHON run_pipeline.py --report daily >> $LOG 2>&1
+
+# 06:30 NPT daily — Refresh Power BI / dashboard data export
+45 0 * * * cd $NEA_DIR && $PYTHON etl/transform/aggregate_data.py >> $LOG 2>&1
+
+# ── WEEKLY JOBS ─────────────────────────────────────────────
+
+# 02:00 NPT every Sunday — Full ETL pipeline (all sources)
+15 20 * * 0 cd $NEA_DIR && $PYTHON run_pipeline.py --mode full >> $LOG 2>&1
+
+# 03:00 NPT every Saturday — Full analytics run
+15 21 * * 6 cd $NEA_DIR && $PYTHON run_pipeline.py --analytics all >> $LOG 2>&1
+
+# ── MONTHLY JOBS ────────────────────────────────────────────
+
+# 10:45 NPT on the 1st of each month — Monthly report
+0 5 1 * * cd $NEA_DIR && $PYTHON run_pipeline.py --report monthly >> $LOG 2>&1
+
+# ── ANNUAL JOBS ─────────────────────────────────────────────
+
+# 09:00 NPT on Shrawan 1 (approx July 17) — Fiscal year annual report
+# Note: Nepal FY starts Shrawan 1 (approx July 17). Adjust date yearly.
+15 3 17 7 * cd $NEA_DIR && $PYTHON run_pipeline.py --report yearly >> $LOG 2>&1
+
+# ── MONITORING ──────────────────────────────────────────────
+
+# Every 15 minutes — Pipeline health check (metrics collection)
+*/15 * * * * cd $NEA_DIR && $PYTHON monitoring/metrics.py >> $LOG 2>&1
+
+# ── LOG ROTATION ────────────────────────────────────────────
+# Add to /etc/logrotate.d/nea-pipeline:
+# /opt/nea-pipeline/logs/*.log {
+#     weekly
+#     rotate 12
+#     compress
+#     missingok
+#     notifempty
+# }

@@ -1,0 +1,206 @@
+{
+  "title": "NEA Electricity Analytics — Pipeline Dashboard",
+  "description": "Nepal Electricity Authority data pipeline monitoring and KPI dashboard",
+  "version": "1.0.0",
+  "refresh": "5m",
+  "timezone": "Asia/Kathmandu",
+  "panels": [
+    {
+      "id": 1,
+      "title": "Pipeline Status",
+      "type": "stat",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "nea_pipeline_load_rows",
+          "legendFormat": "Records Loaded"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": { "mode": "thresholds" },
+          "thresholds": {
+            "steps": [
+              { "color": "red",    "value": 0 },
+              { "color": "yellow", "value": 1000 },
+              { "color": "green",  "value": 10000 }
+            ]
+          }
+        }
+      },
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 0 }
+    },
+    {
+      "id": 2,
+      "title": "Peak Demand (MW)",
+      "type": "gauge",
+      "datasource": "Prometheus",
+      "targets": [
+        { "expr": "nea_pipeline_peak_demand_mw", "legendFormat": "Peak MW" }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "min": 0,
+          "max": 3000,
+          "thresholds": {
+            "steps": [
+              { "color": "green",  "value": 0 },
+              { "color": "yellow", "value": 2000 },
+              { "color": "red",    "value": 2500 }
+            ]
+          }
+        }
+      },
+      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 0 }
+    },
+    {
+      "id": 3,
+      "title": "System Loss % by Province",
+      "type": "bargauge",
+      "datasource": "PostgreSQL",
+      "targets": [
+        {
+          "rawSql": "SELECT province_name_en AS metric, system_loss_pct AS value FROM fact_province_electricity pe JOIN dim_province p ON p.province_id=pe.province_id WHERE report_year=2023 ORDER BY system_loss_pct DESC",
+          "format": "table"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "steps": [
+              { "color": "green",  "value": 0 },
+              { "color": "yellow", "value": 18 },
+              { "color": "red",    "value": 22 }
+            ]
+          }
+        }
+      },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 4 }
+    },
+    {
+      "id": 4,
+      "title": "Monthly Consumption Trend (GWh)",
+      "type": "timeseries",
+      "datasource": "PostgreSQL",
+      "targets": [
+        {
+          "rawSql": "SELECT date_trunc('month', full_date) AS time, total_gwh AS value, 'Total' AS metric FROM fact_monthly_consumption mc JOIN dim_date d ON d.date_id=mc.date_id ORDER BY time",
+          "format": "time_series"
+        }
+      ],
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 4 }
+    },
+    {
+      "id": 5,
+      "title": "Hourly Load Profile by Consumer Type",
+      "type": "timeseries",
+      "datasource": "PostgreSQL",
+      "targets": [
+        {
+          "rawSql": "SELECT hour::text AS time, consumer_type AS metric, AVG(consumption_kwh) AS value FROM fact_smart_meter_hourly GROUP BY hour, consumer_type ORDER BY hour",
+          "format": "time_series"
+        }
+      ],
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 12 }
+    },
+    {
+      "id": 6,
+      "title": "Province Per-Capita Consumption (kWh)",
+      "type": "barchart",
+      "datasource": "PostgreSQL",
+      "targets": [
+        {
+          "rawSql": "SELECT p.province_name_en, pe.per_capita_kwh FROM fact_province_electricity pe JOIN dim_province p ON p.province_id=pe.province_id WHERE pe.report_year=2023 ORDER BY pe.per_capita_kwh DESC",
+          "format": "table"
+        }
+      ],
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 12 }
+    },
+    {
+      "id": 7,
+      "title": "Annual Import vs Export (GWh)",
+      "type": "barchart",
+      "datasource": "PostgreSQL",
+      "targets": [
+        {
+          "rawSql": "SELECT fiscal_year, energy_imported_gwh AS Imported, energy_exported_gwh AS Exported FROM fact_annual_consumption ORDER BY fiscal_year",
+          "format": "table"
+        }
+      ],
+      "description": "Nepal became net exporter in FY 2022/23 after Upper Tamakoshi commissioning",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 20 }
+    },
+    {
+      "id": 8,
+      "title": "Data Quality Score (%)",
+      "type": "stat",
+      "datasource": "Prometheus",
+      "targets": [
+        { "expr": "nea_pipeline_data_quality_pct", "legendFormat": "Quality %" }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "steps": [
+              { "color": "red",    "value": 0 },
+              { "color": "yellow", "value": 90 },
+              { "color": "green",  "value": 95 }
+            ]
+          },
+          "unit": "percent"
+        }
+      },
+      "gridPos": { "h": 4, "w": 6, "x": 12, "y": 0 }
+    },
+    {
+      "id": 9,
+      "title": "Pipeline Duration (minutes)",
+      "type": "stat",
+      "datasource": "Prometheus",
+      "targets": [
+        { "expr": "nea_pipeline_extraction_duration / 60", "legendFormat": "Minutes" }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "steps": [
+              { "color": "green",  "value": 0 },
+              { "color": "yellow", "value": 60 },
+              { "color": "red",    "value": 120 }
+            ]
+          }
+        }
+      },
+      "gridPos": { "h": 4, "w": 6, "x": 18, "y": 0 }
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "name": "Pipeline Runs",
+        "datasource": "PostgreSQL",
+        "rawQuery": "SELECT extract(epoch from start_time)*1000 AS time, status AS text, pipeline_name AS tags FROM etl_pipeline_runs WHERE status IN ('success','failed') ORDER BY start_time DESC LIMIT 50",
+        "enable": true
+      }
+    ]
+  },
+  "templating": {
+    "list": [
+      {
+        "name": "province",
+        "type": "query",
+        "datasource": "PostgreSQL",
+        "query": "SELECT province_name_en FROM dim_province ORDER BY province_id",
+        "multi": true,
+        "includeAll": true
+      },
+      {
+        "name": "fiscal_year",
+        "type": "query",
+        "datasource": "PostgreSQL",
+        "query": "SELECT DISTINCT fiscal_year FROM fact_annual_consumption ORDER BY fiscal_year DESC",
+        "current": "2023/24"
+      }
+    ]
+  }
+}

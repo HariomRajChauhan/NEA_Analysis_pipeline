@@ -1,0 +1,8 @@
+province_id,province_name,population_2021,area_sq_km,population_density,households,avg_household_size,urban_pct,literacy_rate_pct,per_capita_income_usd,gdp_contribution_pct,electrification_pct,major_industries
+1,Koshi,4972521,25905,191.9,1202457,4.1,42.5,82.1,1285,15.2,94.8,"Agriculture, Tea, Tourism, Textiles"
+2,Madhesh,6126288,9661,634.2,1306480,4.7,31.2,71.8,985,14.8,89.2,"Agriculture, Sugar, Jute, Manufacturing"
+3,Bagmati,6126288,20300,301.8,1612546,3.8,82.5,92.4,2850,45.6,98.5,"IT, Finance, Tourism, Commerce, Education"
+4,Gandaki,2403757,21773,110.4,641890,3.7,52.4,88.5,1650,8.4,96.1,"Tourism, Hydropower, Agriculture"
+5,Lumbini,5123717,22288,229.9,1187624,4.3,38.5,79.2,1180,14.8,93.5,"Agriculture, Manufacturing, Tourism"
+6,Karnali,1688682,27984,60.3,415312,4.1,15.8,72.5,785,3.2,83.7,"Agriculture, Herbal, Livestock, Mining"
+7,Sudurpashchim,2552517,19539,130.6,631258,4.0,28.5,75.8,980,7.8,87.4,"Agriculture, Forestry, Tourism, Labor"

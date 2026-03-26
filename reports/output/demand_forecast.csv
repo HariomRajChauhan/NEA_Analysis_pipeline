@@ -1,0 +1,6 @@
+fiscal_year,forecast_gwh,growth_assumption_pct,confidence,method
+2024/25,11724.7,12.55,Moderate,Log-linear trend
+2025/26,13195.6,12.55,Moderate,Log-linear trend
+2026/27,14851.0,12.55,Moderate,Log-linear trend
+2027/28,16714.1,12.55,Moderate,Log-linear trend
+2028/29,18811.0,12.55,Moderate,Log-linear trend
