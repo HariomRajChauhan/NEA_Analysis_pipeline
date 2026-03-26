@@ -210,3 +210,247 @@
 2026-03-25 23:10:12,877 - etl.transform.aggregate_data - INFO - Creating dashboard export CSV
 2026-03-25 23:10:12,879 - etl.transform.aggregate_data - INFO - Dashboard export saved: dashboard/dashboard_data.csv
 2026-03-25 23:10:12,879 - etl.transform.aggregate_data - INFO - === Aggregation Complete. Tables: ['annual_summary', 'monthly_trends', 'revenue_by_sector', 'province_ranking', 'system_losses', 'hourly_load_profile', 'peak_demand_calendar'] ===
+2026-03-26 07:34:02,211 - main_etl - INFO - ============================================================
+2026-03-26 07:34:02,389 - main_etl - INFO - Nepal Electricity Analytics Pipeline — START
+2026-03-26 07:34:02,390 - main_etl - INFO - Mode: full | Dry-run: False
+2026-03-26 07:34:02,391 - main_etl - INFO - Start time: 2026-03-26 07:34:02 NPT
+2026-03-26 07:34:02,391 - main_etl - INFO - ============================================================
+2026-03-26 07:34:02,391 - main_etl - INFO - ── EXTRACT stage ──────────────────────────────
+2026-03-26 07:34:04,260 - etl.extract.extract_nea - INFO - === Starting NEA Data Extraction ===
+2026-03-26 07:34:04,260 - etl.extract.extract_nea - INFO - Extracting annual consumption from: data/raw/nea_reports/nea_annual_consumption.csv
+2026-03-26 07:34:04,265 - etl.extract.extract_nea - INFO - Extracted 9 annual records
+2026-03-26 07:34:04,266 - etl.extract.extract_nea - INFO - Extracting monthly consumption from: data/raw/nea_reports/nea_monthly_consumption.csv
+2026-03-26 07:34:04,275 - etl.extract.extract_nea - INFO - Extracted 24 monthly records
+2026-03-26 07:34:04,276 - etl.extract.extract_nea - INFO - Extracting tariff structure from: data/raw/nea_reports/nea_tariff_structure.csv
+2026-03-26 07:34:04,279 - etl.extract.extract_nea - INFO - Extracted 19 tariff categories
+2026-03-26 07:34:04,282 - etl.extract.extract_nea - INFO - Extracted 14 hydropower projects
+2026-03-26 07:34:04,283 - etl.extract.extract_nea - INFO - === NEA Extraction Complete. Datasets: ['annual', 'monthly', 'tariff', 'projects'] ===
+2026-03-26 07:34:04,283 - etl.extract.extract_smart_meter - INFO - === Starting Smart Meter Extraction ===
+2026-03-26 07:34:04,283 - etl.extract.extract_smart_meter - INFO - Extracting smart meter data from data/raw/smart_meter/smart_meter_hourly.csv
+2026-03-26 07:34:04,596 - etl.extract.extract_smart_meter - INFO - Smart meter extract: 72000 rows, 100 meters, date range 2024-01-01 00:00:00 to 2024-01-30 23:00:00
+2026-03-26 07:34:04,596 - etl.extract.extract_smart_meter - INFO - Extracting smart meter data from data/raw/smart_meter/smart_meter_hourly.csv
+2026-03-26 07:34:04,726 - etl.extract.extract_smart_meter - INFO - Smart meter extract: 72000 rows, 100 meters, date range 2024-01-01 00:00:00 to 2024-01-30 23:00:00
+2026-03-26 07:34:04,776 - etl.extract.extract_smart_meter - INFO - Generated meter registry for 300 meters
+2026-03-26 07:34:12,812 - etl.extract.extract_smart_meter - INFO - Detected 0 outage events across all meters
+2026-03-26 07:34:12,848 - etl.extract.extract_smart_meter - INFO - Extracted peak demand records: 10000 rows
+2026-03-26 07:34:12,849 - etl.extract.extract_smart_meter - INFO - === Smart Meter Extraction Complete ===
+2026-03-26 07:34:12,849 - etl.extract.extract_weather_api - INFO - === Starting Weather Data Extraction ===
+2026-03-26 07:34:12,849 - etl.extract.extract_weather_api - INFO - Loading local weather data from data/raw/weather_api/weather_data.csv
+2026-03-26 07:34:12,854 - etl.extract.extract_weather_api - INFO - Loaded 22 weather records from 2024-01-01 00:00:00 to 2024-12-01 00:00:00
+2026-03-26 07:34:12,860 - etl.extract.extract_weather_api - INFO - Calculated HDD, CDD, and thermal discomfort index
+2026-03-26 07:34:12,866 - etl.extract.extract_weather_api - INFO - Added monsoon season flags
+2026-03-26 07:34:12,866 - etl.extract.extract_weather_api - INFO - === Weather Extraction Complete ===
+2026-03-26 07:34:12,866 - etl.extract.extract_open_data - INFO - === Starting Open Data Nepal Extraction ===
+2026-03-26 07:34:12,866 - etl.extract.extract_open_data - INFO - Extracting province electricity data from data/raw/open_data_nepal/province_electricity_data.csv
+2026-03-26 07:34:12,872 - etl.extract.extract_open_data - INFO - Loaded 7 province records
+2026-03-26 07:34:12,872 - etl.extract.extract_open_data - INFO - Extracting district electricity data from data/raw/open_data_nepal/district_electricity.csv
+2026-03-26 07:34:12,877 - etl.extract.extract_open_data - INFO - Loaded 77 district records
+2026-03-26 07:34:12,878 - etl.extract.extract_open_data - INFO - Extracting population data from data/external/population_data/nepal_province_population.csv
+2026-03-26 07:34:12,882 - etl.extract.extract_open_data - INFO - Loaded population data for 7 provinces
+2026-03-26 07:34:14,154 - etl.extract.extract_open_data - INFO - World Bank: fetched 20 per-capita kWh records
+2026-03-26 07:34:14,158 - etl.extract.extract_open_data - INFO - Extracted 14 IPP project records
+2026-03-26 07:34:14,158 - etl.extract.extract_open_data - INFO - === Open Data Extraction Complete ===
+2026-03-26 07:34:14,158 - main_etl - INFO - Extracted datasets: ['annual', 'monthly', 'tariff', 'projects', 'hourly_readings', 'meter_registry', 'outage_events', 'demand_peaks', 'weather_raw', 'weather_enriched', 'province_electricity', 'district_electricity', 'population', 'worldbank_percapita', 'ipp_projects']
+2026-03-26 07:34:14,158 - main_etl - INFO - ── CLEAN stage ────────────────────────────────
+2026-03-26 07:34:14,190 - etl.transform.clean_data - INFO - === Starting Data Cleaning Stage ===
+2026-03-26 07:34:14,191 - etl.transform.clean_data - INFO - Cleaning annual consumption data
+2026-03-26 07:34:14,218 - etl.transform.clean_data - INFO - [annual_consumption] after clean: shape=(9, 21), total_nulls=0, memory=3KB
+2026-03-26 07:34:14,359 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/annual_consumption_cleaned.csv (9 rows)
+2026-03-26 07:34:14,359 - etl.transform.clean_data - INFO - Cleaning monthly consumption data
+2026-03-26 07:34:14,377 - etl.transform.clean_data - INFO - [monthly_consumption] after clean: shape=(24, 18), total_nulls=2, memory=7KB
+2026-03-26 07:34:14,458 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/monthly_consumption_cleaned.csv (24 rows)
+2026-03-26 07:34:14,458 - etl.transform.clean_data - INFO - Cleaning smart meter data: 72000 rows
+2026-03-26 07:34:14,603 - etl.transform.clean_data - INFO - [smart_meter] after clean: shape=(72000, 17), total_nulls=0, memory=11531KB
+2026-03-26 07:34:15,950 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/smart_meter_cleaned.csv (72000 rows)
+2026-03-26 07:34:15,950 - etl.transform.clean_data - INFO - Cleaning weather data
+2026-03-26 07:34:15,983 - etl.transform.clean_data - INFO - [weather] after clean: shape=(22, 27), total_nulls=0, memory=6KB
+2026-03-26 07:34:15,993 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/weather_cleaned.csv (22 rows)
+2026-03-26 07:34:15,993 - etl.transform.clean_data - INFO - Cleaning province data
+2026-03-26 07:34:16,009 - etl.transform.clean_data - INFO - [province_data] after clean: shape=(7, 19), total_nulls=0, memory=3KB
+2026-03-26 07:34:16,014 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/province_electricity_cleaned.csv (7 rows)
+2026-03-26 07:34:16,014 - etl.transform.clean_data - INFO - === Cleaning Complete. Datasets: ['annual', 'monthly', 'smart_meter', 'weather', 'province'] ===
+2026-03-26 07:34:16,014 - main_etl - INFO - ── TRANSFORM stage ────────────────────────────
+2026-03-26 07:34:16,051 - etl.transform.transform_data - INFO - === Starting Transformation Stage ===
+2026-03-26 07:34:16,052 - etl.transform.transform_data - INFO - Computing revenue estimates from tariff rates
+2026-03-26 07:34:16,062 - etl.transform.transform_data - INFO - Revenue calculation complete
+2026-03-26 07:34:16,069 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/monthly_revenue_transformed.csv (24 rows)
+2026-03-26 07:34:16,081 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/annual_transformed.csv (9 rows)
+2026-03-26 07:34:16,082 - etl.transform.transform_data - INFO - Engineering smart meter features
+2026-03-26 07:34:17,982 - etl.transform.transform_data - INFO - Smart meter feature engineering complete
+2026-03-26 07:34:19,668 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/smart_meter_features_transformed.csv (72000 rows)
+2026-03-26 07:34:19,668 - etl.transform.transform_data - INFO - Creating system-level hourly load profile
+2026-03-26 07:34:19,744 - etl.transform.transform_data - INFO - System load profile: 2160 hourly records
+2026-03-26 07:34:19,776 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/hourly_system_load_transformed.csv (2160 rows)
+2026-03-26 07:34:19,776 - etl.transform.transform_data - INFO - Creating consumption-weather joint features
+2026-03-26 07:34:19,809 - etl.transform.transform_data - INFO - Weather-consumption join: 24 rows
+2026-03-26 07:34:19,813 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/weather_consumption_transformed.csv (24 rows)
+2026-03-26 07:34:19,815 - etl.transform.transform_data - INFO - Enriching province data with population metrics
+2026-03-26 07:34:19,821 - etl.transform.transform_data - INFO - Province enrichment complete: 7 rows, 23 columns
+2026-03-26 07:34:19,824 - etl.transform.transform_data - INFO - Saved transformed: data/processed/transformed_data/province_enriched_transformed.csv (7 rows)
+2026-03-26 07:34:19,824 - etl.transform.transform_data - INFO - === Transformation Complete. Datasets: ['monthly_revenue', 'annual', 'smart_meter_features', 'hourly_system_load', 'weather_consumption', 'province_enriched'] ===
+2026-03-26 07:34:19,825 - main_etl - INFO - ── AGGREGATE stage ─────────────────────────────
+2026-03-26 07:34:19,870 - etl.transform.aggregate_data - INFO - === Starting Aggregation Stage ===
+2026-03-26 07:34:19,871 - etl.transform.aggregate_data - INFO - Aggregating annual KPI summary
+2026-03-26 07:34:19,889 - etl.transform.aggregate_data - INFO - Saved aggregated: data/processed/aggregated_data/annual_kpi_summary.csv (9 rows)
+2026-03-26 07:34:19,890 - etl.transform.aggregate_data - INFO - Aggregating monthly trends
+2026-03-26 07:34:19,909 - etl.transform.aggregate_data - INFO - Saved aggregated: data/processed/aggregated_data/monthly_trends.csv (24 rows)
+2026-03-26 07:34:19,909 - etl.transform.aggregate_data - INFO - Aggregating revenue by sector
+2026-03-26 07:34:19,928 - etl.transform.aggregate_data - INFO - Saved aggregated: data/processed/aggregated_data/revenue_by_sector.csv (2 rows)
+2026-03-26 07:34:19,929 - etl.transform.aggregate_data - INFO - Aggregating province rankings
+2026-03-26 07:34:19,942 - etl.transform.aggregate_data - INFO - Saved aggregated: data/processed/aggregated_data/province_ranking.csv (7 rows)
+2026-03-26 07:34:19,942 - etl.transform.aggregate_data - INFO - Aggregating system losses by province
+2026-03-26 07:34:19,958 - etl.transform.aggregate_data - INFO - Saved aggregated: data/processed/aggregated_data/system_losses_by_province.csv (7 rows)
+2026-03-26 07:34:19,958 - etl.transform.aggregate_data - INFO - Aggregating hourly load profiles
+2026-03-26 07:34:20,243 - etl.transform.aggregate_data - INFO - Saved aggregated: data/processed/aggregated_data/hourly_load_profile.csv (144 rows)
+2026-03-26 07:34:20,243 - etl.transform.aggregate_data - INFO - Aggregating peak demand calendar
+2026-03-26 07:34:20,314 - etl.transform.aggregate_data - INFO - Saved aggregated: data/processed/aggregated_data/peak_demand_calendar.csv (90 rows)
+2026-03-26 07:34:20,315 - etl.transform.aggregate_data - INFO - Creating dashboard export CSV
+2026-03-26 07:34:20,321 - etl.transform.aggregate_data - INFO - Dashboard export saved: dashboard/dashboard_data.csv
+2026-03-26 07:34:20,321 - etl.transform.aggregate_data - INFO - === Aggregation Complete. Tables: ['annual_summary', 'monthly_trends', 'revenue_by_sector', 'province_ranking', 'system_losses', 'hourly_load_profile', 'peak_demand_calendar'] ===
+2026-03-26 07:34:20,321 - main_etl - INFO - ── LOAD stage ─────────────────────────────────
+2026-03-26 07:34:20,609 - etl.load.load_to_postgres - INFO - === Starting Load Stage ===
+2026-03-26 07:34:21,348 - main_etl - ERROR - Pipeline FAILED: (psycopg2.errors.InsufficientPrivilege) permission denied for table etl_pipeline_runs
+
+[SQL: 
+            INSERT INTO etl_pipeline_runs
+                (pipeline_name, start_time, end_time, status, records_loaded, error_message)
+            VALUES
+                (%(name)s, %(start)s, NOW(), %(status)s, %(loaded)s, %(err)s)
+        ]
+[parameters: {'name': 'nea_main_etl', 'start': datetime.datetime(2026, 3, 26, 7, 34, 20, 628489), 'status': 'failed', 'loaded': 0, 'err': "(psycopg2.errors.InsufficientPrivilege) permission denied for table fact_annual_consumption\n\n[SQL: \n            INSERT INTO fact_annual_consumptio ... (5235 characters truncated) ...  'net_energy_gwh': 10150, 'self_sufficiency_ratio': 1.0049, 'load_factor_pct': 52.64})]\n(Background on this error at: https://sqlalche.me/e/14/f405)"}]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+Traceback (most recent call last):
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 1000, in do_executemany
+    cursor.executemany(statement, parameters)
+psycopg2.errors.InsufficientPrivilege: permission denied for table fact_annual_consumption
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hrch/Documents/Advance_Python/NEA_Analytic_Pipeline/etl/load/load_to_postgres.py", line 241, in run_load
+    n = upsert_annual_consumption(transformed["annual"], engine)
+  File "/home/hrch/Documents/Advance_Python/NEA_Analytic_Pipeline/etl/load/load_to_postgres.py", line 117, in upsert_annual_consumption
+    result = conn.execute(stmt, df_load.to_dict("records"))
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1890, in _execute_context
+    self.dialect.do_executemany(
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 1000, in do_executemany
+    cursor.executemany(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InsufficientPrivilege) permission denied for table fact_annual_consumption
+
+[SQL: 
+            INSERT INTO fact_annual_consumption (fiscal_year, fiscal_year_bs, total_energy_gwh, domestic_gwh, industrial_gwh, commercial_gwh, irrigation_gwh, other_gwh, peak_demand_mw, total_consumers, per_capita_kwh, system_loss_pct, installed_capacity_mw, energy_imported_gwh, energy_exported_gwh, net_energy_gwh, self_sufficiency_ratio, load_factor_pct)
+            VALUES (%(fiscal_year)s, %(fiscal_year_bs)s, %(total_energy_gwh)s, %(domestic_gwh)s, %(industrial_gwh)s, %(commercial_gwh)s, %(irrigation_gwh)s, %(other_gwh)s, %(peak_demand_mw)s, %(total_consumers)s, %(per_capita_kwh)s, %(system_loss_pct)s, %(installed_capacity_mw)s, %(energy_imported_gwh)s, %(energy_exported_gwh)s, %(net_energy_gwh)s, %(self_sufficiency_ratio)s, %(load_factor_pct)s)
+            ON CONFLICT (fiscal_year) DO UPDATE SET
+                total_energy_gwh = EXCLUDED.total_energy_gwh,
+                peak_demand_mw = EXCLUDED.peak_demand_mw,
+                total_consumers = EXCLUDED.total_consumers,
+                per_capita_kwh = EXCLUDED.per_capita_kwh,
+                system_loss_pct = EXCLUDED.system_loss_pct,
+                loaded_at = NOW()
+        ]
+[parameters: ({'fiscal_year': '2015/16', 'fiscal_year_bs': '2072/73', 'total_energy_gwh': 3720, 'domestic_gwh': 1450, 'industrial_gwh': 1230, 'commercial_gwh': 680, 'irrigation_gwh': 180, 'other_gwh': 180, 'peak_demand_mw': 1170, 'total_consumers': 3150000, 'per_capita_kwh': 131, 'system_loss_pct': 24.5, 'installed_capacity_mw': 897, 'energy_imported_gwh': 1850, 'energy_exported_gwh': 320, 'net_energy_gwh': 5250, 'self_sufficiency_ratio': 0.7086, 'load_factor_pct': 36.3}, {'fiscal_year': '2016/17', 'fiscal_year_bs': '2073/74', 'total_energy_gwh': 4770, 'domestic_gwh': 1860, 'industrial_gwh': 1580, 'commercial_gwh': 870, 'irrigation_gwh': 230, 'other_gwh': 230, 'peak_demand_mw': 1265, 'total_consumers': 3350000, 'per_capita_kwh': 165, 'system_loss_pct': 22.8, 'installed_capacity_mw': 1112, 'energy_imported_gwh': 1620, 'energy_exported_gwh': 480, 'net_energy_gwh': 5910, 'self_sufficiency_ratio': 0.8071, 'load_factor_pct': 43.05}, {'fiscal_year': '2017/18', 'fiscal_year_bs': '2074/75', 'total_energy_gwh': 5260, 'domestic_gwh': 2050, 'industrial_gwh': 1740, 'commercial_gwh': 960, 'irrigation_gwh': 250, 'other_gwh': 260, 'peak_demand_mw': 1380, 'total_consumers': 3580000, 'per_capita_kwh': 180, 'system_loss_pct': 21.2, 'installed_capacity_mw': 1254, 'energy_imported_gwh': 1480, 'energy_exported_gwh': 610, 'net_energy_gwh': 6130, 'self_sufficiency_ratio': 0.8581, 'load_factor_pct': 43.51}, {'fiscal_year': '2018/19', 'fiscal_year_bs': '2075/76', 'total_energy_gwh': 6020, 'domestic_gwh': 2350, 'industrial_gwh': 1990, 'commercial_gwh': 1100, 'irrigation_gwh': 280, 'other_gwh': 300, 'peak_demand_mw': 1530, 'total_consumers': 3820000, 'per_capita_kwh': 204, 'system_loss_pct': 20.1, 'installed_capacity_mw': 1403, 'energy_imported_gwh': 1680, 'energy_exported_gwh': 720, 'net_energy_gwh': 6980, 'self_sufficiency_ratio': 0.8625, 'load_factor_pct': 44.92}, {'fiscal_year': '2019/20', 'fiscal_year_bs': '2076/77', 'total_energy_gwh': 6580, 'domestic_gwh': 2560, 'industrial_gwh': 2180, 'commercial_gwh': 1200, 'irrigation_gwh': 310, 'other_gwh': 330, 'peak_demand_mw': 1640, 'total_consumers': 4050000, 'per_capita_kwh': 220, 'system_loss_pct': 19.5, 'installed_capacity_mw': 1567, 'energy_imported_gwh': 1920, 'energy_exported_gwh': 580, 'net_energy_gwh': 7920, 'self_sufficiency_ratio': 0.8308, 'load_factor_pct': 45.8}, {'fiscal_year': '2020/21', 'fiscal_year_bs': '2077/78', 'total_energy_gwh': 7150, 'domestic_gwh': 2780, 'industrial_gwh': 2370, 'commercial_gwh': 1300, 'irrigation_gwh': 340, 'other_gwh': 360, 'peak_demand_mw': 1730, 'total_consumers': 4280000, 'per_capita_kwh': 238, 'system_loss_pct': 18.9, 'installed_capacity_mw': 1780, 'energy_imported_gwh': 2100, 'energy_exported_gwh': 640, 'net_energy_gwh': 8610, 'self_sufficiency_ratio': 0.8304, 'load_factor_pct': 47.18}, {'fiscal_year': '2021/22', 'fiscal_year_bs': '2078/79', 'total_energy_gwh': 8200, 'domestic_gwh': 3190, 'industrial_gwh': 2720, 'commercial_gwh': 1490, 'irrigation_gwh': 390, 'other_gwh': 410, 'peak_demand_mw': 1890, 'total_consumers': 4520000, 'per_capita_kwh': 270, 'system_loss_pct': 17.8, 'installed_capacity_mw': 2306, 'energy_imported_gwh': 1950, 'energy_exported_gwh': 1240, 'net_energy_gwh': 8910, 'self_sufficiency_ratio': 0.9203, 'load_factor_pct': 49.53}, {'fiscal_year': '2022/23', 'fiscal_year_bs': '2079/80', 'total_energy_gwh': 9280, 'domestic_gwh': 3610, 'industrial_gwh': 3080, 'commercial_gwh': 1680, 'irrigation_gwh': 440, 'other_gwh': 470, 'peak_demand_mw': 1987, 'total_consumers': 4720000, 'per_capita_kwh': 305, 'system_loss_pct': 16.9, 'installed_capacity_mw': 2496, 'energy_imported_gwh': 2180, 'energy_exported_gwh': 1760, 'net_energy_gwh': 9700, 'self_sufficiency_ratio': 0.9567, 'load_factor_pct': 53.31}, {'fiscal_year': '2023/24', 'fiscal_year_bs': '2080/81', 'total_energy_gwh': 10200, 'domestic_gwh': 4310, 'industrial_gwh': 3690, 'commercial_gwh': 1850, 'irrigation_gwh': 480, 'other_gwh': 870, 'peak_demand_mw': 2212, 'total_consumers': 4950000, 'per_capita_kwh': 400, 'system_loss_pct': 15.8, 'installed_capacity_mw': 2715, 'energy_imported_gwh': 1900, 'energy_exported_gwh': 1950, 'net_energy_gwh': 10150, 'self_sufficiency_ratio': 1.0049, 'load_factor_pct': 52.64})]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.InsufficientPrivilege: permission denied for table etl_pipeline_runs
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/hrch/Documents/Advance_Python/NEA_Analytic_Pipeline/etl/main_etl.py", line 176, in main
+    load_stats = run_load(transformed, aggregated, args)
+  File "/home/hrch/Documents/Advance_Python/NEA_Analytic_Pipeline/etl/main_etl.py", line 100, in run_load
+    return do_load(transformed, aggregated)
+  File "/home/hrch/Documents/Advance_Python/NEA_Analytic_Pipeline/etl/load/load_to_postgres.py", line 269, in run_load
+    log_pipeline_run(engine, "nea_main_etl", start, "failed", stats["total_rows"], str(e))
+  File "/home/hrch/Documents/Advance_Python/NEA_Analytic_Pipeline/etl/load/load_to_postgres.py", line 218, in log_pipeline_run
+    conn.execute(text("""
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+    return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1577, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+    self.dialect.do_execute(
+  File "/home/hrch/miniconda3/envs/nea-pipeline/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.InsufficientPrivilege) permission denied for table etl_pipeline_runs
+
+[SQL: 
+            INSERT INTO etl_pipeline_runs
+                (pipeline_name, start_time, end_time, status, records_loaded, error_message)
+            VALUES
+                (%(name)s, %(start)s, NOW(), %(status)s, %(loaded)s, %(err)s)
+        ]
+[parameters: {'name': 'nea_main_etl', 'start': datetime.datetime(2026, 3, 26, 7, 34, 20, 628489), 'status': 'failed', 'loaded': 0, 'err': "(psycopg2.errors.InsufficientPrivilege) permission denied for table fact_annual_consumption\n\n[SQL: \n            INSERT INTO fact_annual_consumptio ... (5235 characters truncated) ...  'net_energy_gwh': 10150, 'self_sufficiency_ratio': 1.0049, 'load_factor_pct': 52.64})]\n(Background on this error at: https://sqlalche.me/e/14/f405)"}]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+2026-03-26 07:37:28,517 - etl.extract.extract_smart_meter - INFO - === Starting Smart Meter Extraction ===
+2026-03-26 07:37:28,539 - etl.extract.extract_smart_meter - INFO - Extracting smart meter data from data/raw/smart_meter/smart_meter_hourly.csv
+2026-03-26 07:37:29,274 - etl.extract.extract_smart_meter - INFO - Smart meter extract: 72000 rows, 100 meters, date range 2024-01-01 00:00:00 to 2024-01-30 23:00:00
+2026-03-26 07:37:29,275 - etl.extract.extract_smart_meter - INFO - Extracting smart meter data from data/raw/smart_meter/smart_meter_hourly.csv
+2026-03-26 07:37:29,473 - etl.extract.extract_smart_meter - INFO - Smart meter extract: 72000 rows, 100 meters, date range 2024-01-01 00:00:00 to 2024-01-30 23:00:00
+2026-03-26 07:37:29,695 - etl.extract.extract_smart_meter - INFO - Generated meter registry for 300 meters
+2026-03-26 07:37:39,824 - etl.extract.extract_smart_meter - INFO - Detected 0 outage events across all meters
+2026-03-26 07:37:39,872 - etl.extract.extract_smart_meter - INFO - Extracted peak demand records: 10000 rows
+2026-03-26 07:37:39,873 - etl.extract.extract_smart_meter - INFO - === Smart Meter Extraction Complete ===
+2026-03-26 07:37:39,873 - etl.transform.clean_data - INFO - Cleaning smart meter data: 72000 rows
+2026-03-26 07:37:40,073 - etl.transform.clean_data - INFO - [smart_meter] after clean: shape=(72000, 17), total_nulls=0, memory=11531KB
+2026-03-26 07:37:40,563 - analytics.weather_usage_analysis - INFO - === Weather-Consumption Analysis ===
+2026-03-26 07:37:47,563 - etl.extract.extract_nea - INFO - === Starting NEA Data Extraction ===
+2026-03-26 07:37:47,563 - etl.extract.extract_nea - INFO - Extracting annual consumption from: data/raw/nea_reports/nea_annual_consumption.csv
+2026-03-26 07:37:47,633 - etl.extract.extract_nea - INFO - Extracted 9 annual records
+2026-03-26 07:37:47,633 - etl.extract.extract_nea - INFO - Extracting monthly consumption from: data/raw/nea_reports/nea_monthly_consumption.csv
+2026-03-26 07:37:47,665 - etl.extract.extract_nea - INFO - Extracted 24 monthly records
+2026-03-26 07:37:47,665 - etl.extract.extract_nea - INFO - Extracting tariff structure from: data/raw/nea_reports/nea_tariff_structure.csv
+2026-03-26 07:37:47,668 - etl.extract.extract_nea - INFO - Extracted 19 tariff categories
+2026-03-26 07:37:47,670 - etl.extract.extract_nea - INFO - Extracted 14 hydropower projects
+2026-03-26 07:37:47,670 - etl.extract.extract_nea - INFO - === NEA Extraction Complete. Datasets: ['annual', 'monthly', 'tariff', 'projects'] ===
+2026-03-26 07:37:47,670 - etl.extract.extract_weather_api - INFO - === Starting Weather Data Extraction ===
+2026-03-26 07:37:47,670 - etl.extract.extract_weather_api - INFO - Loading local weather data from data/raw/weather_api/weather_data.csv
+2026-03-26 07:37:47,675 - etl.extract.extract_weather_api - INFO - Loaded 22 weather records from 2024-01-01 00:00:00 to 2024-12-01 00:00:00
+2026-03-26 07:37:47,680 - etl.extract.extract_weather_api - INFO - Calculated HDD, CDD, and thermal discomfort index
+2026-03-26 07:37:47,684 - etl.extract.extract_weather_api - INFO - Added monsoon season flags
+2026-03-26 07:37:47,684 - etl.extract.extract_weather_api - INFO - === Weather Extraction Complete ===
+2026-03-26 07:37:47,684 - etl.transform.clean_data - INFO - === Starting Data Cleaning Stage ===
+2026-03-26 07:37:47,684 - etl.transform.clean_data - INFO - Cleaning annual consumption data
+2026-03-26 07:37:47,705 - etl.transform.clean_data - INFO - [annual_consumption] after clean: shape=(9, 21), total_nulls=0, memory=3KB
+2026-03-26 07:37:47,707 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/annual_consumption_cleaned.csv (9 rows)
+2026-03-26 07:37:47,707 - etl.transform.clean_data - INFO - Cleaning monthly consumption data
+2026-03-26 07:37:47,722 - etl.transform.clean_data - INFO - [monthly_consumption] after clean: shape=(24, 18), total_nulls=2, memory=7KB
+2026-03-26 07:37:47,725 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/monthly_consumption_cleaned.csv (24 rows)
+2026-03-26 07:37:47,725 - etl.transform.clean_data - INFO - Cleaning weather data
+2026-03-26 07:37:47,745 - etl.transform.clean_data - INFO - [weather] after clean: shape=(22, 27), total_nulls=0, memory=6KB
+2026-03-26 07:37:47,749 - etl.transform.clean_data - INFO - Saved cleaned data: data/processed/cleaned_data/weather_cleaned.csv (22 rows)
+2026-03-26 07:37:47,749 - etl.transform.clean_data - INFO - === Cleaning Complete. Datasets: ['annual', 'monthly', 'weather'] ===
+2026-03-26 07:37:47,750 - etl.transform.transform_data - INFO - Creating consumption-weather joint features
+2026-03-26 07:37:47,782 - etl.transform.transform_data - INFO - Weather-consumption join: 24 rows
+2026-03-26 07:37:47,991 - analytics.province_analysis - INFO - === Province Analysis ===
