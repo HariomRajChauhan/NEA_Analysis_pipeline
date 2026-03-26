@@ -120,6 +120,7 @@ Inside project folder:
 
 ```bash
 psql -U nea_admin -d nea_electricity_db -f database/schema.sql
+psql -U postgres -d nea_electricity_db -f database/schema.sql
 ```
 
 ---
